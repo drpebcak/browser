@@ -61,7 +61,7 @@ tools: service
 
 ---
 name: scrollToBottom
-description: Scrolls to the bottom of the page by pressing the End key.
+description: Scrolls to the bottom of the page.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 tools: service
 
