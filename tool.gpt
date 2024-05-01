@@ -3,7 +3,7 @@ description: A toolset that can be used to browse and navigate websites.
 
 ---
 name: browse
-description: Navigate to a website.
+description: Navigates to a website, but does not return the content.
 args: website: The URL of the website to visit. Must be an HTTPS URL.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 args: headless: Whether to launch actual browser. Set to false unless asked otherwise.
@@ -61,7 +61,7 @@ tools: service
 
 ---
 name: scrollToBottom
-description: Scrolls to the bottom of the page.
+description: Scrolls to the bottom of the page. This will load more content on infinite scrolling sites.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 tools: service
 
