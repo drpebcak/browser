@@ -4,9 +4,9 @@ import { delay } from './delay'
 import { exec } from '@gptscript-ai/gptscript'
 import { Tool } from '@gptscript-ai/gptscript/lib/tool'
 import { type Locator } from '@playwright/test'
-import path from "path";
-import * as os from "node:os";
-import * as fs from "node:fs";
+import path from 'path'
+import * as os from 'node:os'
+import * as fs from 'node:fs'
 
 // browse navigates to the website and returns the text content of the page (if print is true)
 export async function browse (context: BrowserContext, website: string, sessionID: string, print: boolean): Promise<string> {
@@ -33,7 +33,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     $('[onload]').removeAttr('onload')
     $('[onerror]').removeAttr('onerror')
     $('body').each(function () {
-      resp += $.html()
+      resp += $(this).text()
     })
   }
   resp += `sessionID: ${sessionID}\n`

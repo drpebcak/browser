@@ -60,6 +60,14 @@ tools: service
 #!http://service.daemon.gptscript.local/enter
 
 ---
+name: scrollToBottom
+description: Scrolls to the bottom of the page by pressing the End key.
+args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
+tools: service
+
+#!http://service.daemon.gptscript.local/scrollToBottom
+
+---
 name: check
 description: Checks a radio button on the web page.
 args: userInput: Description of the element to check.

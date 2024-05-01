@@ -12,6 +12,7 @@ import * as path from 'path'
 import * as os from 'os'
 import { login } from './login'
 import * as fs from 'fs'
+import {scrollToBottom} from "./scrollToBottom";
 
 async function main (): Promise<void> {
   const app = express()
@@ -94,6 +95,8 @@ async function main (): Promise<void> {
       await select(context, userInput, data.option ?? '')
     } else if (req.path === '/login') {
       await login(context, website, sessionID)
+    } else if (req.path === '/scrollToBottom') {
+      await scrollToBottom(context)
     }
 
     res.end()
