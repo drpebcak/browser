@@ -1,4 +1,4 @@
-export: browse, summarize, click, fill, check, select, enter, login
+export: browse, getPageContents, click, fill, check, select, enter, login, scrollToBottom
 description: A toolset that can be used to browse and navigate websites.
 
 ---
