@@ -8,19 +8,16 @@ import { scrollToBottom } from './scrollToBottom'
 
 // browse navigates to the website and returns the text content of the page (if print is true)
 export async function browse (context: BrowserContext, website: string, sessionID: string, mode: string): Promise<string> {
-  let page = await context.newPage()
-  // const pages = context.pages()
-  // if (pages.length > 1) {
-  //   page = pages[pages.length - 1]
-  // } else {
-  //   page = await context.newPage()
-  // }
+  let page: Page
+  const pages = context.pages()
+  if (pages.length > 1) {
+    page = pages[pages.length - 1]
+  } else {
+    page = await context.newPage()
+  }
   if (website !== '') {
     await page.goto(website)
     await delay(5000)
-    // Scroll twice to load a bit more content on infinite scroll sites:
-    await scrollToBottom(context)
-    await scrollToBottom(context)
   }
 
   let resp: string = ''
