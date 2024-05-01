@@ -1,9 +1,9 @@
 export: browse, summarize, click, fill, check, select, enter, login
-description: A toolset that can be used to browse and navigate websites. This tool is capable of following links, filling out forms, clicking buttons, and other basic web browsing functionality.
+description: A toolset that can be used to browse and navigate websites.
 
 ---
 name: browse
-description: Navigate to a website. Only provide the sessionID if it was specified in the prompt.
+description: Navigate to a website.
 args: website: The URL of the website to visit. Must be an HTTPS URL.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 args: headless: Whether to launch actual browser. Set to false unless asked otherwise.
@@ -13,7 +13,7 @@ tools: service
 
 ---
 name: summarize
-description: Navigates to a website and returns its HTML content. Only provide the sessionID if it was specified in the prompt.
+description: Navigates to a website and returns its HTML content.
 args: website: The URL of the website to visit. Must be an HTTPS URL.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 args: headless: Whether to launch actual browser. Set to false unless asked otherwise.

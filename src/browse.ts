@@ -37,6 +37,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     })
   }
   resp += `sessionID: ${sessionID}\n`
+  resp = resp.split('\n').filter(line => line.trim() !== '').join('\n')
 
   // write resp to a temp file
   const tempFile = path.join(os.tmpdir(), 'gptscript-temp.txt')
