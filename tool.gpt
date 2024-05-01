@@ -1,5 +1,6 @@
 export: browse, getPageContents, click, fill, check, select, enter, login, scrollToBottom
 description: A toolset that can be used to browse and navigate websites.
+global context: "The scrollToBottom tool is particularly useful for loading more content on website that support infinite scroll. It is highly recommended to do this before using getPageContents to ensure you get all the content."
 
 ---
 name: browse
@@ -61,7 +62,7 @@ tools: service
 
 ---
 name: scrollToBottom
-description: Scrolls to the bottom of the page. This will load more content on infinite scrolling sites.
+description: Scrolls to the bottom of the page. This can be useful for loading more content.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 tools: service
 
