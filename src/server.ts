@@ -16,7 +16,7 @@ import * as fs from 'fs'
 async function main (): Promise<void> {
   const app = express()
   // Get port from the environment variable or use 9888 if it is not defined
-  const port = (process.env.PORT != null) || 9888
+  const port = process.env.PORT ?? 9888
   delete (process.env.GPTSCRIPT_INPUT)
   app.use(bodyParser.json())
 
