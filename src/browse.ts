@@ -33,11 +33,10 @@ export async function browse (context: BrowserContext, website: string, sessionI
     $('[onload]').removeAttr('onload')
     $('[onerror]').removeAttr('onerror')
     $('body').each(function () {
-      resp += $(this).text()
+      resp += $.html()
     })
   }
   resp += `sessionID: ${sessionID}\n`
-  resp = resp.replace(/\n+/g, '\n').replace(/' '+/g, ' ')
 
   // write resp to a temp file
   const tempFile = path.join(os.tmpdir(), 'gptscript-temp.txt')
