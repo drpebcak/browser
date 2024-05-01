@@ -12,7 +12,7 @@ import * as path from 'path'
 import * as os from 'os'
 import { login } from './login'
 import * as fs from 'fs'
-import {scrollToBottom} from "./scrollToBottom";
+import { scrollToBottom } from './scrollToBottom'
 
 async function main (): Promise<void> {
   const app = express()
