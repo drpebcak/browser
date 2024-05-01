@@ -85,7 +85,7 @@ async function main (): Promise<void> {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       await fill(context, userInput, data.content ?? '', keywords)
     } else if (req.path === '/enter') {
-      await enter(context, data.input as string)
+      await enter(context)
     } else if (req.path === '/check') {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       await check(context, userInput, keywords)
