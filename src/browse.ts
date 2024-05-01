@@ -233,7 +233,8 @@ export async function summarize (page: Page, keywords: string[], action: string)
     })
   }
 
-  return resp
+  // Remove duplicate newlines and return
+  return resp.replace(/\n+/g, '\n')
 }
 
 export async function getText (locator: Locator): Promise<string> {
