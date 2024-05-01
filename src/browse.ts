@@ -43,7 +43,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
       }
     })
     $('body').each(function () {
-      resp += $(this).html()
+      resp += $(this).text()
     })
   }
   resp += `sessionID: ${sessionID}\n`
