@@ -25,7 +25,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     const html = await page.content()
     const $ = cheerio.load(html)
     $('script').remove()
-    // $('style').remove()
+    $('style').remove()
     $('[style]').removeAttr('style')
     $('[onclick]').removeAttr('onclick')
     $('[onload]').removeAttr('onload')
