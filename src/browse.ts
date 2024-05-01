@@ -4,9 +4,6 @@ import { delay } from './delay'
 import { exec } from '@gptscript-ai/gptscript'
 import { Tool } from '@gptscript-ai/gptscript/lib/tool'
 import { type Locator } from '@playwright/test'
-import path from 'path'
-import * as os from 'node:os'
-import * as fs from 'node:fs'
 
 // browse navigates to the website and returns the text content of the page (if print is true)
 export async function browse (context: BrowserContext, website: string, sessionID: string, print: boolean): Promise<string> {
@@ -47,13 +44,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     })
   }
   resp += `sessionID: ${sessionID}\n`
-  resp = resp.split('\n').filter(line => line.trim() !== '').join('\n')
-
-  // write resp to a temp file
-  const tempFile = path.join(os.tmpdir(), 'gptscript-temp.txt')
-  fs.writeFileSync(tempFile, resp)
-
-  return resp
+  return resp.split('\n').filter(line => line.trim() !== '').join('\n')
 }
 
 // inspect inspects a webpage and returns a locator for a specific element based on the user's input and action.
