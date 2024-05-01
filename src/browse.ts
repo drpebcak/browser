@@ -6,7 +6,7 @@ import { Tool } from '@gptscript-ai/gptscript/lib/tool'
 import { type Locator } from '@playwright/test'
 
 // browse navigates to the website and returns the text content of the page (if print is true)
-export async function browse (context: BrowserContext, website: string, sessionID: string, print: boolean): Promise<string> {
+export async function browse (context: BrowserContext, website: string, sessionID: string, mode: string): Promise<string> {
   let page: Page
   const pages = context.pages()
   if (pages.length > 1) {
@@ -20,7 +20,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
   }
 
   let resp: string = ''
-  if (print) {
+  if (mode === 'getPageContents') {
     const html = await page.content()
     const $ = cheerio.load(html)
     $('script').remove()
@@ -41,6 +41,12 @@ export async function browse (context: BrowserContext, website: string, sessionI
     })
     $('body').each(function () {
       resp += $(this).text()
+    })
+  } else if (mode === 'getPageLinks') {
+    const html = await page.content()
+    const $ = cheerio.load(html)
+    $('a').each(function() {
+      resp += `${$(this).text()} - ${$(this).attr('href')}\n`
     })
   }
   resp += `sessionID: ${sessionID}\n`

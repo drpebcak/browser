@@ -77,9 +77,11 @@ async function main (): Promise<void> {
 
     if (req.path === '/browse') {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      res.send(await browse(context, website, sessionID, false))
-    } else if (req.path === '/summarize') {
-      res.send(await browse(context, website, sessionID, true))
+      res.send(await browse(context, website, sessionID, 'browse'))
+    } else if (req.path === '/getPageContents') {
+      res.send(await browse(context, website, sessionID, 'getPageContents'))
+    } else if (req.path === '/getPageLinks') {
+      res.send(await browse(context, website, sessionID, 'getPageLinks'))
     } else if (req.path === '/click') {
       await click(context, userInput, keywords.map((keyword) => keyword.trim()))
     } else if (req.path === '/fill') {
