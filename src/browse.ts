@@ -4,6 +4,7 @@ import { delay } from './delay'
 import { exec } from '@gptscript-ai/gptscript'
 import { Tool } from '@gptscript-ai/gptscript/lib/tool'
 import { type Locator } from '@playwright/test'
+import { scrollToBottom } from './scrollToBottom'
 
 // browse navigates to the website and returns the text content of the page (if print is true)
 export async function browse (context: BrowserContext, website: string, sessionID: string, mode: string): Promise<string> {
@@ -16,7 +17,10 @@ export async function browse (context: BrowserContext, website: string, sessionI
   }
   if (website !== '') {
     await page.goto(website)
-    await delay(5000) // TODO - figure out why this is here, and if it can be shortened
+    await delay(5000)
+    // Scroll twice to load a bit more content:
+    await scrollToBottom(context)
+    await scrollToBottom(context)
   }
 
   let resp: string = ''
