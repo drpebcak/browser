@@ -34,7 +34,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     })
   }
   resp += `sessionID: ${sessionID}\n`
-  return resp
+  return resp.replace(/\n+/g, '\n')
 }
 
 // inspect inspects a webpage and returns a locator for a specific element based on the user's input and action.
