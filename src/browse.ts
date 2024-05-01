@@ -33,7 +33,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     $('[onload]').removeAttr('onload')
     $('[onerror]').removeAttr('onerror')
     $('body').each(function () {
-      resp += $(this).text()
+      resp += $(this).html()
     })
   }
   resp += `sessionID: ${sessionID}\n`
