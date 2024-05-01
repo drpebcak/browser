@@ -12,7 +12,7 @@ tools: service
 #!http://service.daemon.gptscript.local/browse
 
 ---
-name: summarize
+name: getPageContents
 description: Navigates to a website and returns its HTML content.
 args: website: The URL of the website to visit. Must be an HTTPS URL.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
