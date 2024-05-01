@@ -19,8 +19,8 @@ export async function browse (context: BrowserContext, website: string, sessionI
     await page.goto(website)
     await delay(5000)
     // Scroll twice to load a bit more content:
-    await scrollToBottom(context)
-    await scrollToBottom(context)
+    // await scrollToBottom(context)
+    // await scrollToBottom(context)
   }
 
   let resp: string = ''
