@@ -32,6 +32,16 @@ export async function browse (context: BrowserContext, website: string, sessionI
     $('[onclick]').removeAttr('onclick')
     $('[onload]').removeAttr('onload')
     $('[onerror]').removeAttr('onerror')
+    $('div').each(function () {
+      if ($(this).text() === '' && $(this).children().length === 0) {
+        $(this).remove()
+      }
+    })
+    $('span').each(function () {
+      if ($(this).text() === '' && $(this).children().length === 0) {
+        $(this).remove()
+      }
+    })
     $('body').each(function () {
       resp += $(this).html()
     })
