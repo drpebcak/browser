@@ -28,7 +28,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     // For anchor tags, we want to add the href to the text itself, so that the LLM will see it.
     $('a').each(function () {
       const link = new URL($(this).attr('href') ?? '', page.url()).toString()
-      $(this).text(`${$(this).text()} - ${link}`)
+      $(this).text(`${$(this).text().trim()} - ${link.trim()}`)
     })
 
     $('script').remove()
@@ -58,7 +58,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     const $ = cheerio.load(html)
     $('a').each(function () {
       const link = new URL($(this).attr('href') ?? '', page.url()).toString()
-      resp += `${$(this).text()} - ${link}\n`
+      resp += `${$(this).text().trim()} - ${link.trim()}\n`
     })
   }
   resp += `sessionID: ${sessionID}\n`
