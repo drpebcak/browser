@@ -4,7 +4,7 @@ import { delay } from './delay'
 import { exec } from '@gptscript-ai/gptscript'
 import { Tool } from '@gptscript-ai/gptscript/lib/tool'
 import { type Locator } from '@playwright/test'
-import { scrollToBottom } from './scrollToBottom'
+import { URL } from 'url'
 
 // browse navigates to the website and returns the text content of the page (if print is true)
 export async function browse (context: BrowserContext, website: string, sessionID: string, mode: string): Promise<string> {
@@ -46,8 +46,9 @@ export async function browse (context: BrowserContext, website: string, sessionI
   } else if (mode === 'getPageLinks') {
     const html = await page.content()
     const $ = cheerio.load(html)
-    $('a').each(function() {
-      resp += `${$(this).text()} - ${$(this).attr('href')}\n`
+    $('a').each(function () {
+      const link = new URL(page.url(), $(this).attr('href')).toString()
+      resp += `${$(this).text()} - ${link}\n`
     })
   }
   resp += `sessionID: ${sessionID}\n`
