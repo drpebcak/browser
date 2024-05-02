@@ -16,8 +16,12 @@ export async function browse (context: BrowserContext, website: string, sessionI
     page = await context.newPage()
   }
   if (website !== '') {
-    await page.goto(website, { waitUntil: 'networkidle', timeout: 10000 })
-    // await delay(5000)
+    try {
+      await page.goto(website, {
+        waitUntil: 'networkidle',
+        timeout: 3000
+      })
+    } catch (e) {} // Just continue even if we timed out.
   }
 
   let resp: string = ''
