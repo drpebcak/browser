@@ -82,6 +82,8 @@ async function main (): Promise<void> {
       res.send(await browse(context, website, sessionID, 'getPageContents'))
     } else if (req.path === '/getPageLinks') {
       res.send(await browse(context, website, sessionID, 'getPageLinks'))
+    } else if (req.path === '/getPageImages') {
+      res.send(await browse(context, website, sessionID, 'getPageImages'))
     } else if (req.path === '/click') {
       await click(context, userInput, keywords.map((keyword) => keyword.trim()))
     } else if (req.path === '/fill') {

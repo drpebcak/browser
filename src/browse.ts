@@ -60,6 +60,12 @@ export async function browse (context: BrowserContext, website: string, sessionI
       const link = new URL($(this).attr('href') ?? '', page.url()).toString()
       resp += `${$(this).text().trim()} - ${link.trim()}\n`
     })
+  } else if (mode === 'getPageImages') {
+    const html = await page.content()
+    const $ = cheerio.load(html)
+    $('img').each(function () {
+      resp += `${$(this).html()}\n`
+    })
   }
   resp += `sessionID: ${sessionID}\n`
   return resp.split('\n').filter(line => line.trim() !== '').join('\n')
