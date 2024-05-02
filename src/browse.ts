@@ -16,8 +16,8 @@ export async function browse (context: BrowserContext, website: string, sessionI
     page = await context.newPage()
   }
   if (website !== '') {
-    await page.goto(website)
-    await delay(5000)
+    await page.goto(website, { waitUntil: 'networkidle' })
+    // await delay(5000)
   }
 
   let resp: string = ''
