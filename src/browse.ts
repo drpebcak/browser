@@ -21,7 +21,9 @@ export async function browse (context: BrowserContext, website: string, sessionI
         waitUntil: 'networkidle',
         timeout: 3000
       })
-    } catch (e) {} // Just continue even if we timed out.
+    } catch (e) {
+      await delay(3000) // Just wait for a bit, even if we timed out, and then proceed.
+    }
   }
 
   let resp: string = ''
