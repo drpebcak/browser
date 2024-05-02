@@ -47,7 +47,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     const html = await page.content()
     const $ = cheerio.load(html)
     $('a').each(function () {
-      const link = new URL(page.url(), $(this).attr('href')).toString()
+      const link = new URL($(this).attr('href') ?? '', page.url()).toString()
       resp += `${$(this).text()} - ${link}\n`
     })
   }
