@@ -24,12 +24,21 @@ export async function browse (context: BrowserContext, website: string, sessionI
   if (mode === 'getPageContents') {
     const html = await page.content()
     const $ = cheerio.load(html)
+
+    // For anchor tags, we want to add the href to the text itself, so that the LLM will see it.
+    $('a').each(function () {
+      const link = new URL($(this).attr('href') ?? '', page.url()).toString()
+      $(this).text(`${$(this).text()} - ${link}`)
+    })
+
     $('script').remove()
     $('style').remove()
     $('[style]').removeAttr('style')
     $('[onclick]').removeAttr('onclick')
     $('[onload]').removeAttr('onload')
     $('[onerror]').removeAttr('onerror')
+
+    // Remove empty divs and spans
     $('div').each(function () {
       if ($(this).text() === '' && $(this).children().length === 0) {
         $(this).remove()
@@ -40,6 +49,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
         $(this).remove()
       }
     })
+
     $('body').each(function () {
       resp += $(this).text()
     })
