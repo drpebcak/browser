@@ -217,23 +217,22 @@ export async function summarize (page: Page, keywords: string[], action: string)
   }
 
   if (action === 'click') {
-    // $('a').each(function () {
-    //   if (keywords.length !== 0) {
-    //     for (const keyword of keywords) {
-    //       if ($.html(this).toLowerCase().includes(keyword.toLowerCase())) {
-    //         resp += $.html(this)
-    //         break
-    //       }
-    //     }
-    //   } else {
-    //     resp += $.html(this)
-    //   }
-    // })
+    $('a').each(function () {
+      if (keywords.length !== 0) {
+        for (const keyword of keywords) {
+          if ($.html(this).toLowerCase().includes(keyword.toLowerCase())) {
+            resp += $.html(this)
+            break
+          }
+        }
+      } else {
+        resp += $.html(this)
+      }
+    })
     $('button').each(function () {
       if (keywords.length !== 0) {
         for (const keyword of keywords) {
-          if ($.html(this).toLowerCase().includes(keyword.toLowerCase()) ||
-            (Object.entries($(this).attr() ?? '').toString().toLowerCase().includes(keyword.toLowerCase()))) {
+          if ($.html(this).toLowerCase().includes(keyword.toLowerCase())) {
             resp += $.html(this)
             break
           }
