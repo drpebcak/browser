@@ -269,6 +269,8 @@ export async function summarize (page: Page, keywords: string[], action: string)
     })
   }
 
+  console.log(resp)
+
   // Remove duplicate newlines and return
   return resp.replace(/\n+/g, '\n')
 }
