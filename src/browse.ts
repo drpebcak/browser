@@ -15,7 +15,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
   } else {
     page = await context.newPage()
   }
-  if (website !== '') {
+  if (website !== '' && page.url() !== website) {
     await page.goto(website)
     await delay(5000)
   }
