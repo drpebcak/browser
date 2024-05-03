@@ -232,7 +232,8 @@ export async function summarize (page: Page, keywords: string[], action: string)
     $('button').each(function () {
       if (keywords.length !== 0) {
         for (const keyword of keywords) {
-          if (($(this).html() ?? '').toLowerCase().includes(keyword.toLowerCase())) {
+          if ($.html(this).toLowerCase().includes(keyword.toLowerCase()) ||
+            (Object.entries($(this).attr() ?? '').toString().toLowerCase().includes(keyword.toLowerCase()))) {
             resp += $.html(this)
             break
           }
@@ -268,8 +269,6 @@ export async function summarize (page: Page, keywords: string[], action: string)
       }
     })
   }
-
-  console.log(resp)
 
   // Remove duplicate newlines and return
   return resp.replace(/\n+/g, '\n')
