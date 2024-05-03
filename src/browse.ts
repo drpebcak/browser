@@ -16,7 +16,9 @@ export async function browse (context: BrowserContext, website: string, sessionI
     page = await context.newPage()
   }
   if (website !== '' && page.url() !== website) {
-    await page.goto(website)
+    try {
+      await page.goto(website)
+    } catch (e) {} // choke the exception because we don't care
     await delay(5000)
   }
 
