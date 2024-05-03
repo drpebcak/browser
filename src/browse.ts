@@ -232,7 +232,7 @@ export async function summarize (page: Page, keywords: string[], action: string)
     $('button').each(function () {
       if (keywords.length !== 0) {
         for (const keyword of keywords) {
-          if ($.html(this).toLowerCase().includes(keyword.toLowerCase())) {
+          if (Object.entries($(this).attr() ?? '').toString().toLowerCase().includes(keyword.toLowerCase())) {
             resp += $.html(this)
             break
           }
