@@ -64,7 +64,7 @@ export async function browse (context: BrowserContext, website: string, sessionI
     const html = await page.content()
     const $ = cheerio.load(html)
     $('img').each(function () {
-      resp += `${$(this).html()}\n`
+      resp += `${Object.entries($(this).attr() ?? '').toString()}\n`
     })
   }
   resp += `sessionID: ${sessionID}\n`
