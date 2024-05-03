@@ -81,7 +81,7 @@ tools: service
 
 ---
 name: scrollToBottom
-description: Scrolls to the bottom of the page to load more content. If getPageContents did not return enough content, use this to potentially load more, and then call getPageContents again.
+description: Loads more content by scrolling to the bottom of the page. Useful for sites like Reddit which support infinite scroll.
 args: sessionID: Don't provide this arg unless the prompt specifies a session ID.
 tools: service
 
